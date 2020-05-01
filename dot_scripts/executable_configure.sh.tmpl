@@ -21,3 +21,13 @@ systemctl enable docker
 banner "I will configure snap"
 systemctl enable --now snapd.socket     
 snap wait system seed.loaded
+
+banner "I will configure mount a partition without asking for my password"
+cat <<EOT >> /etc/polkit-1/rules.d/99-mount-partitions.rules
+// Password-less mounting of local partitions
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.freedesktop.udisks2.filesystem-mount-system" && subject.isInGroup("wheel")) {
+       return polkit.Result.YES;
+    }
+});
+EOT
