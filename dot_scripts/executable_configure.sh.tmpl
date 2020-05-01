@@ -1,0 +1,23 @@
+
+#!/bin/bash
+
+HELP="Usage: sudo ./configure.sh
+Automatically configure Arch Linux
+
+Examples:
+$ sudo ./configure.sh"
+
+source $(dirname "$0")/shared.sh
+
+if [ -z "$SUDO_USER" ]; then
+    echo "$HELP"
+    exit 1
+fi
+
+banner "I will configure docker"
+usermod -aG docker {{ .chezmoi.username }}
+systemctl enable docker
+
+banner "I will configure snap"
+systemctl enable --now snapd.socket     
+snap wait system seed.loaded
