@@ -20,6 +20,9 @@ fi
 # 'odt2txt' # extracts the text out of OpenDocument Texts
 
 BASE_PACKAGES=(
+    'vi'
+    'vim'
+    'gedit'
     'acpi'  # enable special ACPI functions or add information to /proc or /sys
     'atool' # A script for managing file archives of various types
     'blueman'   # a full featured Bluetooth manager   
@@ -45,6 +48,15 @@ BASE_PACKAGES=(
     'usbguard'  # Software framework for implementing USB device authorization policies
     'whois' # Intelligent WHOIS client
     'zsh'   # A very advanced and programmable command interpreter (shell) for UNIX
+    'ntfs-3g' # NTFS filesystem driver and utilities
+    'nemo' # Cinnamon file manager (Nautilus fork)
+    'nemo-fileroller' # File archiver extension for Nemo
+    'ttf-fira-code' # Monospaced font with programming ligatures
+    'alsa-utils'    # Advanced Linux Sound Architecture - Utilities
+    'base-devel'
+    'networkmanager-openvpn'    # NetworkManager VPN plugin for OpenVPN
+    'docker'    # utility to pack, ship and run any application as a lightweight container
+    'docker-compose'    # Fast, isolated development environments using Docker
 )
 
 GUI_PACKAGES=(
@@ -62,6 +74,16 @@ GUI_PACKAGES=(
     'xfce4-notifyd' # Notification daemon for the Xfce desktop
     'xfce4-screenshooter'   # Plugin that makes screenshots for the Xfce panel
     'xorg'
+    'nvidia'    # NVIDIA drivers for linux
+    'nvidia-settings' # Tool for configuring the NVIDIA graphics driver
+    'xf86-video-intel'  # X.org Intel i810/i830/i915/945G/G965+ video drivers
+    'arandr' # configuration utility to the RandR (Resize and Rotate) X Window System
+    'meld'  # Compare files, directories and working copies
+    'lxappearance'  # Feature-rich GTK+ theme switcher of the LXDE Desktop
+    'network-manager-applet' # Applet for managing network connections
+    'shotwell'  # A digital photo organizer designed for the GNOME desktop environment
+    'eom'   # An image viewing and cataloging program for MATE
+    'libreoffice-still' # LibreOffice maintenance branch
 )
 
 AUR_PACKAGES=(
@@ -70,6 +92,17 @@ AUR_PACKAGES=(
     'oh-my-zsh-git' # A community-driven framework for managing your zsh configuration
     'mint-themes-git'   # Linux Mint themes
     'mint-y-icons'  # A flat, colorful, and modern theme based on Paper and Moka
+    'git-cola' # A powerful GUI for Git
+    'google-chrome'
+    'ttf-meslo-nerd-font-powerlevel10k' # Meslo Nerd Font patched for Powerlevel10k
+    'visual-studio-code-bin'    # Visual Studio Code (vscode)
+    'git-big-picture'   # git-big-picture
+    'keepass'   # Easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices
+    'keepass-plugin-http'   # KeePass plugin to expose password entries securely (256bit AES/CBC) over HTTP
+    'timeshift' # A system restore utility for Linux
+    'mongodb-compass'   # The MongoDB GUI
+    'snapd' # Service and tools for management of snap packages
+    'kbdd-git'  # Simple daemon and library to make per window layout
 )
 
 
@@ -80,6 +113,7 @@ if [ "$(uname -m)" == 'x86_64' ]; then
         'pulseaudio'    # A featureful, general-purpose sound server
         'pulseaudio-alsa'   # ALSA Configuration for PulseAudio
         'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
+        'alsa-tools' # advanced tools for certain sound cards
         'xfce4-power-manager'   # Power manager for Xfce desktop
     )
     GUI_PACKAGES+=(
