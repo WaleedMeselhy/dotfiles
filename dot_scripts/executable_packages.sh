@@ -3,13 +3,8 @@
 HELP="Usage: sudo ./packages.sh <operation> [...]
 Automatically install Arch Linux packages
 
-operations:
-    -a           installs AUR packages
-    -t <options> installs packages of GUI or CLI
-
 Examples:
-$ sudo ./packages.sh -at GUI
-$ sudo ./packages.sh -a -t cli"
+$ sudo ./packages.sh"
 
 source $(dirname "$0")/shared.sh
 
@@ -18,96 +13,87 @@ if [ -z "$SUDO_USER" ]; then
     exit 1
 fi
 
-aurFlag=
-typeFlag=
-while getopts at: name
-do
-    case $name in
-        a) aurFlag=1;;
-        t) typeFlag=1
-           typeVal=$(echo "$OPTARG" | tr '[:upper:]' '[:lower:]');;
-        *) echo "$HELP"
-           exit 2;;
-    esac
-done
 
-if [ $OPTIND -eq 1 ]; then
-    echo "$HELP"
-    exit 1
-fi
+# 'bat' # A cat(1) clone with wings
+# 'highlight' # Fast and flexible source code highlighter (CLI version)
+# 'lsd'   # The next gen ls command
+# 'odt2txt' # extracts the text out of OpenDocument Texts
 
 BASE_PACKAGES=(
-    'acpi'
-    'atool'
-    'bat'
-    'blueman'
-    'bluez-utils'
-    'curl'
-    'dhcpcd'
-    'ffmpegthumbnailer'
-    'firewalld'
-    'git'
-    'go-pie'
-    'go-tools'
-    'highlight'
-    'htop'
-    'jq'
-    'less'
-    'lsd'
-    'mediainfo'
-    'neofetch'
-    'odt2txt'
-    'openvpn'
-    'openssh'
-    'pacman-contrib'
-    'poppler'
-    'ranger'
-    'tmux'
-    'usbguard'
-    'weechat'
-    'whois'
-    'xterm'
-    'zsh'
-    'zsh-theme-powerlevel9k'
-)
-
-CLI_PACKAGES=(
-    'elinks'
-    'emacs-nox'
+    'acpi'  # enable special ACPI functions or add information to /proc or /sys
+    'atool' # A script for managing file archives of various types
+    'blueman'   # a full featured Bluetooth manager   
+    'bluez-utils'   # Development and debugging utilities for the bluetooth protocol stack
+    'curl'  # An URL retrieval utility and library
+    'dhcpcd' # DHCP client daemon
+    'ffmpegthumbnailer' # Lightweight video thumbnailer that can be used by file managers
+    'firewalld' # Firewall daemon with D-Bus interface
+    'git'   # the fast distributed version control system
+    'go-pie'    # Core compiler tools for the Go programming language
+    'go-tools'  # Developer tools for the Go programming language
+    'htop'  # Interactive process viewer
+    'jq'    # Command-line JSON processor
+    'less'  # A terminal based program for viewing text files
+    'mediainfo' # Supplies technical and tag information about a video or audio file (CLI interface)
+    'neofetch'  # A CLI system information tool written in BASH that supports displaying images.
+    'openvpn'   # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
+    'openssh'   # Premier connectivity tool for remote login with the SSH protocol
+    'pacman-contrib'    # Contributed scripts and tools for pacman systems
+    'poppler'   # PDF rendering library based on xpdf 3.0
+    'ranger'    # Simple, vim-like file manager
+    'tmux'  # A terminal multiplexer
+    'usbguard'  # Software framework for implementing USB device authorization policies
+    'whois' # Intelligent WHOIS client
+    'zsh'   # A very advanced and programmable command interpreter (shell) for UNIX
 )
 
 GUI_PACKAGES=(
-    'adapta-gtk-theme'
-    'adobe-source-code-pro-fonts'
-    'alacritty'
-    'compton'
-    'discount'
-    'emacs'
-    'evince'
-    'feh'
+    'adobe-source-code-pro-fonts'   # Monospaced font family for user interface and coding environments
+    'alacritty' # A cross-platform, GPU-accelerated terminal emulator
+    'compton'   # compositor for X
+    'evince'    # Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))
+    'feh'   # Fast and light imlib2-based image viewer
     'firefox'
-    'i3-gaps'
-    'i3blocks'
-    'i3lock'
-    'npm'
-    'papirus-icon-theme'
-    'rofi'
-    'xbindkeys'
-    'xfce4-notifyd'
-    'xfce4-screenshooter'
+    'i3-gaps'   # A fork of i3wm tiling window manager with more features, including gaps
+    'i3blocks'  # Define blocks for your i3bar status line
+    'i3lock'    # Improved screenlocker based upon XCB and PAM
+    'rofi'  # A window switcher, application launcher and dmenu replacement
+    'xbindkeys' # Launch shell commands with your keyboard or your mouse under X
+    'xfce4-notifyd' # Notification daemon for the Xfce desktop
+    'xfce4-screenshooter'   # Plugin that makes screenshots for the Xfce panel
     'xorg'
 )
 
 AUR_PACKAGES=(
-    'gotop'
-    'nerd-fonts-source-code-pro'
-    'oh-my-zsh-git'
+    'gotop' # Another terminal based graphical activity monitor
+    'nerd-fonts-source-code-pro' # Patched font SourceCodePro from nerd-fonts library
+    'oh-my-zsh-git' # A community-driven framework for managing your zsh configuration
+    'mint-themes-git'   # Linux Mint themes
+    'mint-y-icons'  # A flat, colorful, and modern theme based on Paper and Moka
 )
 
+
+if [ "$(uname -m)" == 'x86_64' ]; then
+    BASE_PACKAGES+=(
+        'reflector' # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+        'playerctl' # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+        'pulseaudio'    # A featureful, general-purpose sound server
+        'pulseaudio-alsa'   # ALSA Configuration for PulseAudio
+        'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
+        'xfce4-power-manager'   # Power manager for Xfce desktop
+    )
+    GUI_PACKAGES+=(
+        'pavucontrol'   # PulseAudio Volume Control
+        'vlc'   # Multi-platform MPEG, VCD/DVD, and DivX player
+        'xorg-xinit'    # X.Org initialisation program
+    )
+    AUR_PACKAGES+=(
+        'pulseaudio-ctl'    # Control pulseaudio volume from the shell or mapped to keyboard shortcuts
+    )
+fi
+
+
 function installAurPackages() {
-    if [ -z "$aurFlag" ]; then
-        return 0
-    fi
     banner "I will install the AUR packages"
     packageIterator "yay" "${AUR_PACKAGES[@]}"
 }
@@ -160,46 +146,16 @@ function installPackages() {
     configurePacman
     packageIterator "pacman" "${BASE_PACKAGES[@]}"
 
-    if [ "$typeVal" == 'cli' ]; then
-        banner "I will install the CLI packages"
-        packageIterator "pacman" "${CLI_PACKAGES[@]}"
-    elif [ "$typeVal" == 'gui' ]; then
-        banner "I will install the GUI packages"
-        packageIterator "pacman" "${GUI_PACKAGES[@]}"
-    fi
+   
+    banner "I will install the GUI packages"
+    packageIterator "pacman" "${GUI_PACKAGES[@]}"
 
     installYay
 }
 
-if [ -z "$typeFlag" ]; then
-    banner "Packages can't be blank" "warn"
-    exit 1
-fi
 
-if [ "$typeVal" != 'cli' ] && [ "$typeVal" != 'gui' ]; then
-    banner "Invalid packages" "warn"
-    exit 1
-fi
 
-if [ "$typeVal" == 'gui' ]; then
-    AUR_PACKAGES+=('bibata-cursor-theme')
-fi
 
-if [ "$(uname -m)" == 'x86_64' ]; then
-    BASE_PACKAGES+=('acpi'
-                    'reflector'
-                    'playerctl'
-                    'pulseaudio'
-                    'pulseaudio-alsa'
-                    'pulseaudio-bluetooth'
-                    'xfce4-power-manager')
-    GUI_PACKAGES+=('gimp'
-                   'pavucontrol'
-                   'vlc'
-                   'xorg-xinit')
-    AUR_PACKAGES+=('spotify'
-                   'pulseaudio-ctl')
-fi
 
 installPackages
 installAurPackages
