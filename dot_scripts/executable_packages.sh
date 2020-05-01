@@ -16,13 +16,13 @@ fi
 
 # 'bat' # A cat(1) clone with wings
 # 'highlight' # Fast and flexible source code highlighter (CLI version)
-# 'lsd'   # The next gen ls command
 # 'odt2txt' # extracts the text out of OpenDocument Texts
 
 BASE_PACKAGES=(
     'vi'
     'vim'
     'gedit'
+    'lsd'   # The next gen ls command
     'acpi'  # enable special ACPI functions or add information to /proc or /sys
     'atool' # A script for managing file archives of various types
     'blueman'   # a full featured Bluetooth manager   
@@ -57,6 +57,7 @@ BASE_PACKAGES=(
     'networkmanager-openvpn'    # NetworkManager VPN plugin for OpenVPN
     'docker'    # utility to pack, ship and run any application as a lightweight container
     'docker-compose'    # Fast, isolated development environments using Docker
+    'numlockx'  # turns NumLock
 )
 
 GUI_PACKAGES=(

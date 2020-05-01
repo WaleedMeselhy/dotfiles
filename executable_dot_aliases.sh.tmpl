@@ -1,0 +1,22 @@
+# Aliases for a few useful commands
+alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias ip='ip -c'
+alias rm='rm -i'
+alias x='ranger'
+alias c='cmus'
+alias h='htop'
+
+function fvscode {
+  # you just want one of this:
+  # you may want many of these:
+  export PYTHONPATH=/home/waleed/work/yonohub/yonohub/web/backend:$PYTHONPATH
+  # launch vscode
+  code
+}
+alias vscode='fvscode'
+alias rc='reset && clear'
