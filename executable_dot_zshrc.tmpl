@@ -71,7 +71,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -81,7 +81,19 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions thefuck history-substring-search docker docker-compose autojump zsh-syntax-highlighting) 
+plugins=(
+  zsh-autosuggestions
+  thefuck
+  history-substring-search
+  docker
+  docker-compose
+  autojump
+  zsh-syntax-highlighting
+  colorize
+  gitfast
+  safe-paste
+  tmux
+  ) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,7 +126,7 @@ source $ZSH/oh-my-zsh.sh
 prompt_context() {} 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias shopt='/usr/bin/shopt'
+# alias shopt='/usr/bin/shopt'
 alias dev='source ~/work/dev/bin/activate'
 alias ddev=deactivate
 unset HISTFILESIZE
@@ -164,7 +176,7 @@ setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming 
 setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
 setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
 setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+# setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
@@ -173,3 +185,9 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.aliases.sh 
+
+autoload -U compinit && compinit
+
+# ----------- hack to fix the broken history-substring-search plugin --------- #
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
