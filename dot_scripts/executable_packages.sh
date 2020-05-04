@@ -63,7 +63,7 @@ BASE_PACKAGES=(
 GUI_PACKAGES=(
     'adobe-source-code-pro-fonts'   # Monospaced font family for user interface and coding environments
     'alacritty' # A cross-platform, GPU-accelerated terminal emulator
-    'compton'   # compositor for X
+    'picom'   # compositor for X
     'evince'    # Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))
     'feh'   # Fast and light imlib2-based image viewer
     'firefox'
