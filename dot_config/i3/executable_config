@@ -135,10 +135,10 @@ bindsym $mod+Shift+0 move container to workspace $workspace0
 
 # Always open some programs on specified workspace
 assign [class="firefox"]    $workspace1
-assign [class="emacs"]	   	$workspace2
-assign [class="VirtualBox"]	$workspace5
-assign [class="cmus"]		    $workspace8
-assign [class="spotify"]		$workspace8
+assign [class="emacs"]          $workspace2
+assign [class="VirtualBox"]     $workspace5
+assign [class="cmus"]               $workspace8
+assign [class="spotify"]                $workspace8
 
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 2
@@ -193,7 +193,7 @@ set $magenta #ff79c6
 set $comment #6272a4
 set $purple  #bd93f9
 
-# Set some nice colors      border	 background text     indicator
+# Set some nice colors      border       background text     indicator
 client.focused              $comment $comment   $fg      $comment
 client.unfocused            $bg      $bg        $cyan    $bg
 client.focused_inactive     $bg      $bg        $green   $bg
@@ -204,17 +204,17 @@ client.placeholder          $bg      $bg        $cyan    $bg
 bar
 {
     position top
-	  status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
+          status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-	  font pango: SpaceMono Nerd Font Regular 11
-	  colors
-	  {
+          font pango: SpaceMono Nerd Font Regular 11
+          colors
+          {
         #                   Border Background Text
-		    focused_workspace   $fg    $fg        $bg
-		    active_workspace    $bg    $bg        $purple
-		    inactive_workspace  $bg    $bg        $cyan
-		    urgent_workspace    $bg    $bg        $magenta
-		    background          $bg
+                    focused_workspace   $fg    $fg        $bg
+                    active_workspace    $bg    $bg        $purple
+                    inactive_workspace  $bg    $bg        $cyan
+                    urgent_workspace    $bg    $bg        $magenta
+                    background          $bg
     }
 }
 
@@ -228,7 +228,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back waled!" -i ~/.images/icons8-dog-100.png
 
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer -q set Master toggle && pkill -RTMIN+10 i3blocks
 
@@ -237,6 +237,6 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 exec --no-startup-id "setxkbmap -layout us,ara -option grp:alt_shift_toggle"
 
-exec --no-startup-id "sh -c 'sleep 5; exec xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1366x768 --pos 1920x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal'"
+exec --no-startup-id "sh -c 'sleep 1; exec xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1366x768 --pos 1920x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal & picom --config ~/.config/picom/picom.conf'"
 
-exec --no-startup-id betterlockscreen -u ~/.images/wallpaper.jpeg 
+#exec --no-startup-id picom --config ~/.config/picom/picom.conf
