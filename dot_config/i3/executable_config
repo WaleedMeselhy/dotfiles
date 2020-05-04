@@ -165,7 +165,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Lock screen
-bindsym $mod+Shift+x exec betterlockscreen -l dimblur
+bindsym $mod+Shift+x exec ~/.scripts/lock.sh
 
 # Resize window (you can also use the mouse for that)
 mode "resize"
