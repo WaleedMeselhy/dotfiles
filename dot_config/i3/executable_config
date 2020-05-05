@@ -203,21 +203,42 @@ client.placeholder          $bg      $bg        $cyan    $bg
 # Start i3blocks to display a workspace bar
 bar
 {
-    position top
-          status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
+    position bottom
+    status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-          font pango: Fira Code Regular 13
-          colors
-          {
-        #                   Border Background Text
-                    focused_workspace   $fg    $fg        $bg
-                    active_workspace    $bg    $bg        $purple
-                    inactive_workspace  $bg    $bg        $cyan
-                    urgent_workspace    $bg    $bg        $magenta
-                    background          $bg
+    font pango: Fira Code, Regular 16
+    output $monitor_one
+    tray_output $monitor_two
+    colors
+    {
+#           Border Background Text
+            focused_workspace   $fg    $fg        $bg
+            active_workspace    $bg    $bg        $purple
+            inactive_workspace  $bg    $bg        $cyan
+            urgent_workspace    $bg    $bg        $magenta
+            background          $bg
     }
 }
 
+# Start i3blocks to display a workspace bar
+bar
+{
+    position bottom
+    status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
+    i3bar_command i3bar
+    font pango: Fira Code, Regular 11
+    height 28
+    output $monitor_two
+    colors
+    {
+#           Border Background Text
+            focused_workspace   $fg    $fg        $bg
+            active_workspace    $bg    $bg        $purple
+            inactive_workspace  $bg    $bg        $cyan
+            urgent_workspace    $bg    $bg        $magenta
+            background          $bg
+    }
+}
 # Startup programs
 exec_always --no-startup-id ~/.scripts/wallpapers.sh
 #exec_always --no-startup-id ~/.scripts/monitors.sh
