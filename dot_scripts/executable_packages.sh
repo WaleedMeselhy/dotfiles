@@ -22,6 +22,8 @@ BASE_PACKAGES=(
     'vi'
     'vim'
     'gedit'
+    'wireless_tools' # Tools allowing to manipulate the Wireless Extensions
+    'sysstat' # a collection of performance monitoring tools
     'lsd'   # The next gen ls command
     'acpi'  # enable special ACPI functions or add information to /proc or /sys
     'atool' # A script for managing file archives of various types
