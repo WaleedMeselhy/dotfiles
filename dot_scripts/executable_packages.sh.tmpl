@@ -8,6 +8,7 @@ $ sudo ./packages.sh"
 
 source $(dirname "$0")/shared.sh
 
+NORMAL_USER="{{ .chezmoi.username }}"
 if [ -z "$SUDO_USER" ]; then
     echo "$HELP"
     exit 1
@@ -166,16 +167,12 @@ function configurePacman() {
     sed -i 's/#TotalDownload/TotalDownload/g' /etc/pacman.conf
 }
 
-function installSpacemacs() {
-    if [ "$(uname -m)" == 'x86_64' ]; then
-        banner "I will install spacemacs"
+function installI3blocks() {
 
-        sudo -u "$SUDO_USER" -- sh -c "
-        git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d &>/dev/null
-        cd ~/.emacs.d
-        git checkout develop &>/dev/null
-        cd - &>/dev/null"
-    fi
+    banner "I will install i3blocks"
+    sudo -u "$NORMAL_USER" -- sh -c "
+    git clone https://github.com/vivien/i3blocks-contrib.git ~/.config/i3blocks/blocks
+    "
 }
 
 function installPackages() {
@@ -194,9 +191,9 @@ function installPackages() {
 
 
 
-installPackages
-installAurPackages
-installOhMyZsh
-installSpacemacs
+#installPackages
+#installAurPackages
+#installOhMyZsh
+installI3blocks
 
 banner "Done :)"
