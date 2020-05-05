@@ -101,6 +101,7 @@ interval=2
 label=<span color="#a9e185"> </span>
 
 [microphone]
+command=~/.config/i3blocks/microphone
 label=
 interval=5
 
