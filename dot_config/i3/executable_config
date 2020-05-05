@@ -17,7 +17,7 @@ new_window pixel
 gaps inner 6
 
 # Font for window titles.
-font pango: SpaceMono Nerd Font Mono Medium 11
+font pango: Fira Code Regular 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -206,7 +206,7 @@ bar
     position top
           status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-          font pango: SpaceMono Nerd Font Regular 11
+          font pango: Fira Code Regular 13
           colors
           {
         #                   Border Background Text
@@ -221,9 +221,6 @@ bar
 # Startup programs
 exec_always --no-startup-id ~/.scripts/wallpapers.sh
 #exec_always --no-startup-id ~/.scripts/monitors.sh
-exec --no-startup-id betterlockscreen -w dim
-#exec --no-startup-id compton --config ~/.config/compton/compton.conf
-#exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back waled!" -i ~/.images/icons8-dog-100.png
 
@@ -239,4 +236,3 @@ exec --no-startup-id "setxkbmap -layout us,ara -option grp:alt_shift_toggle"
 
 exec --no-startup-id "sh -c 'sleep 1; exec xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1366x768 --pos 1920x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal & picom --config ~/.config/picom/picom.conf'"
 
-#exec --no-startup-id picom --config ~/.config/picom/picom.conf
