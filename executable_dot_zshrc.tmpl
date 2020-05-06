@@ -80,6 +80,7 @@ ZSH_COLORIZE_TOOL=chroma
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   zsh-autosuggestions
+  zsh-completions
   thefuck
   history-substring-search
   docker
@@ -131,7 +132,7 @@ HISTSIZE=4000
 PROMPT_COMMAND="history -a"
 export HISTSIZE PROMPT_COMMAND
 
-shopt -s histappend
+# shopt -s histappend
 
 
 
