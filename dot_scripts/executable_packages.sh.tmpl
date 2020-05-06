@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 HELP="Usage: sudo ./packages.sh <operation> [...]
 Automatically install Arch Linux packages
 
@@ -14,7 +14,6 @@ if [ -z "$SUDO_USER" ]; then
     exit 1
 fi
 
-
 # 'bat' # A cat(1) clone with wings
 # 'highlight' # Fast and flexible source code highlighter (CLI version)
 # 'odt2txt' # extracts the text out of OpenDocument Texts
@@ -23,113 +22,111 @@ BASE_PACKAGES=(
     'vi'
     'vim'
     'gedit'
-    'wireless_tools' # Tools allowing to manipulate the Wireless Extensions
-    'sysstat' # a collection of performance monitoring tools
-    'lsd'   # The next gen ls command
-    'acpi'  # enable special ACPI functions or add information to /proc or /sys
-    'atool' # A script for managing file archives of various types
-    'blueman'   # a full featured Bluetooth manager   
-    'bluez-utils'   # Development and debugging utilities for the bluetooth protocol stack
-    'curl'  # An URL retrieval utility and library
-    'dhcpcd' # DHCP client daemon
+    'wireless_tools'    # Tools allowing to manipulate the Wireless Extensions
+    'sysstat'           # a collection of performance monitoring tools
+    'lsd'               # The next gen ls command
+    'acpi'              # enable special ACPI functions or add information to /proc or /sys
+    'atool'             # A script for managing file archives of various types
+    'blueman'           # a full featured Bluetooth manager
+    'bluez-utils'       # Development and debugging utilities for the bluetooth protocol stack
+    'curl'              # An URL retrieval utility and library
+    'dhcpcd'            # DHCP client daemon
     'ffmpegthumbnailer' # Lightweight video thumbnailer that can be used by file managers
-    'firewalld' # Firewall daemon with D-Bus interface
-    'git'   # the fast distributed version control system
-    'go-pie'    # Core compiler tools for the Go programming language
-    'go-tools'  # Developer tools for the Go programming language
-    'htop'  # Interactive process viewer
-    'jq'    # Command-line JSON processor
-    'less'  # A terminal based program for viewing text files
-    'mediainfo' # Supplies technical and tag information about a video or audio file (CLI interface)
-    'neofetch'  # A CLI system information tool written in BASH that supports displaying images.
-    'openvpn'   # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-    'openssh'   # Premier connectivity tool for remote login with the SSH protocol
+    'firewalld'         # Firewall daemon with D-Bus interface
+    'git'               # the fast distributed version control system
+    'go-pie'            # Core compiler tools for the Go programming language
+    'go-tools'          # Developer tools for the Go programming language
+    'htop'              # Interactive process viewer
+    'jq'                # Command-line JSON processor
+    'less'              # A terminal based program for viewing text files
+    'mediainfo'         # Supplies technical and tag information about a video or audio file (CLI interface)
+    'neofetch'          # A CLI system information tool written in BASH that supports displaying images.
+    'openvpn'           # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
+    'openssh'           # Premier connectivity tool for remote login with the SSH protocol
     'pacman-contrib'    # Contributed scripts and tools for pacman systems
-    'poppler'   # PDF rendering library based on xpdf 3.0
-    'ranger'    # Simple, vim-like file manager
-    'tmux'  # A terminal multiplexer
-    'usbguard'  # Software framework for implementing USB device authorization policies
-    'whois' # Intelligent WHOIS client
-    'zsh'   # A very advanced and programmable command interpreter (shell) for UNIX
-    'ntfs-3g' # NTFS filesystem driver and utilities
-    'nemo' # Cinnamon file manager (Nautilus fork)
-    'nemo-fileroller' # File archiver extension for Nemo
-    'ttf-fira-code' # Monospaced font with programming ligatures
-    'alsa-utils'    # Advanced Linux Sound Architecture - Utilities
+    'poppler'           # PDF rendering library based on xpdf 3.0
+    'ranger'            # Simple, vim-like file manager
+    'tmux'              # A terminal multiplexer
+    'usbguard'          # Software framework for implementing USB device authorization policies
+    'whois'             # Intelligent WHOIS client
+    'zsh'               # A very advanced and programmable command interpreter (shell) for UNIX
+    'ntfs-3g'           # NTFS filesystem driver and utilities
+    'nemo'              # Cinnamon file manager (Nautilus fork)
+    'nemo-fileroller'   # File archiver extension for Nemo
+    'ttf-fira-code'     # Monospaced font with programming ligatures
+    'alsa-utils'        # Advanced Linux Sound Architecture - Utilities
     'base-devel'
-    'networkmanager-openvpn'    # NetworkManager VPN plugin for OpenVPN
-    'docker'    # utility to pack, ship and run any application as a lightweight container
-    'docker-compose'    # Fast, isolated development environments using Docker
-    'numlockx'  # turns NumLock
+    'networkmanager-openvpn' # NetworkManager VPN plugin for OpenVPN
+    'docker'                 # utility to pack, ship and run any application as a lightweight container
+    'docker-compose'         # Fast, isolated development environments using Docker
+    'numlockx'               # turns NumLock
 )
 
 GUI_PACKAGES=(
-    'adobe-source-code-pro-fonts'   # Monospaced font family for user interface and coding environments
-    'alacritty' # A cross-platform, GPU-accelerated terminal emulator
-    'picom'   # compositor for X
-    'evince'    # Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))
-    'feh'   # Fast and light imlib2-based image viewer
+    'adobe-source-code-pro-fonts' # Monospaced font family for user interface and coding environments
+    'alacritty'                   # A cross-platform, GPU-accelerated terminal emulator
+    'picom'                       # compositor for X
+    'evince'                      # Document viewer (PDF, Postscript, djvu, tiff, dvi, XPS, SyncTex support with gedit, comics books (cbr,cbz,cb7 and cbt))
+    'feh'                         # Fast and light imlib2-based image viewer
     'firefox'
-    'i3-gaps'   # A fork of i3wm tiling window manager with more features, including gaps
-    'i3blocks'  # Define blocks for your i3bar status line
-    'i3lock'    # Improved screenlocker based upon XCB and PAM
-    'rofi'  # A window switcher, application launcher and dmenu replacement
-    'xbindkeys' # Launch shell commands with your keyboard or your mouse under X
-    'xfce4-notifyd' # Notification daemon for the Xfce desktop
-    'xfce4-screenshooter'   # Plugin that makes screenshots for the Xfce panel
+    'i3-gaps'             # A fork of i3wm tiling window manager with more features, including gaps
+    'i3blocks'            # Define blocks for your i3bar status line
+    'i3lock'              # Improved screenlocker based upon XCB and PAM
+    'rofi'                # A window switcher, application launcher and dmenu replacement
+    'xbindkeys'           # Launch shell commands with your keyboard or your mouse under X
+    'xfce4-notifyd'       # Notification daemon for the Xfce desktop
+    'xfce4-screenshooter' # Plugin that makes screenshots for the Xfce panel
     'xorg'
-    'nvidia'    # NVIDIA drivers for linux
-    'nvidia-settings' # Tool for configuring the NVIDIA graphics driver
-    'xf86-video-intel'  # X.org Intel i810/i830/i915/945G/G965+ video drivers
-    'arandr' # configuration utility to the RandR (Resize and Rotate) X Window System
-    'meld'  # Compare files, directories and working copies
-    'lxappearance'  # Feature-rich GTK+ theme switcher of the LXDE Desktop
+    'nvidia'                 # NVIDIA drivers for linux
+    'nvidia-settings'        # Tool for configuring the NVIDIA graphics driver
+    'xf86-video-intel'       # X.org Intel i810/i830/i915/945G/G965+ video drivers
+    'arandr'                 # configuration utility to the RandR (Resize and Rotate) X Window System
+    'meld'                   # Compare files, directories and working copies
+    'lxappearance'           # Feature-rich GTK+ theme switcher of the LXDE Desktop
     'network-manager-applet' # Applet for managing network connections
-    'shotwell'  # A digital photo organizer designed for the GNOME desktop environment
-    'eom'   # An image viewing and cataloging program for MATE
-    'libreoffice-still' # LibreOffice maintenance branch
+    'shotwell'               # A digital photo organizer designed for the GNOME desktop environment
+    'eom'                    # An image viewing and cataloging program for MATE
+    'libreoffice-still'      # LibreOffice maintenance branch
 )
 
 AUR_PACKAGES=(
-    'gotop' # Another terminal based graphical activity monitor
+    'gotop'                      # Another terminal based graphical activity monitor
     'nerd-fonts-source-code-pro' # Patched font SourceCodePro from nerd-fonts library
-    'oh-my-zsh-git' # A community-driven framework for managing your zsh configuration
-    'mint-themes-git'   # Linux Mint themes
-    'mint-y-icons'  # A flat, colorful, and modern theme based on Paper and Moka
-    'git-cola' # A powerful GUI for Git
+    'oh-my-zsh-git'              # A community-driven framework for managing your zsh configuration
+    'mint-themes-git'            # Linux Mint themes
+    'mint-y-icons'               # A flat, colorful, and modern theme based on Paper and Moka
+    'git-cola'                   # A powerful GUI for Git
     'google-chrome'
     'ttf-meslo-nerd-font-powerlevel10k' # Meslo Nerd Font patched for Powerlevel10k
-    'visual-studio-code-bin'    # Visual Studio Code (vscode)
-    'git-big-picture'   # git-big-picture
-    'keepass'   # Easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices
-    'keepass-plugin-http'   # KeePass plugin to expose password entries securely (256bit AES/CBC) over HTTP
-    'timeshift' # A system restore utility for Linux
-    'mongodb-compass'   # The MongoDB GUI
-    'snapd' # Service and tools for management of snap packages
-    'kbdd-git'  # Simple daemon and library to make per window layout
+    'visual-studio-code-bin'            # Visual Studio Code (vscode)
+    'git-big-picture'                   # git-big-picture
+    'keepass'                           # Easy-to-use password manager for Windows, Linux, Mac OS X and mobile devices
+    'keepass-plugin-http'               # KeePass plugin to expose password entries securely (256bit AES/CBC) over HTTP
+    'timeshift'                         # A system restore utility for Linux
+    'mongodb-compass'                   # The MongoDB GUI
+    'snapd'                             # Service and tools for management of snap packages
+    'kbdd-git'                          # Simple daemon and library to make per window layout
 )
-
 
 if [ "$(uname -m)" == 'x86_64' ]; then
     BASE_PACKAGES+=(
-        'reflector' # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
-        'playerctl' # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
-        'pulseaudio'    # A featureful, general-purpose sound server
-        'pulseaudio-alsa'   # ALSA Configuration for PulseAudio
-        'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
-        'alsa-tools' # advanced tools for certain sound cards
-        'xfce4-power-manager'   # Power manager for Xfce desktop
+        'reflector'            # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+        'playerctl'            # mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others.
+        'pulseaudio'           # A featureful, general-purpose sound server
+        'pulseaudio-alsa'      # ALSA Configuration for PulseAudio
+        'pulseaudio-bluetooth' # Bluetooth support for PulseAudio
+        'alsa-tools'           # advanced tools for certain sound cards
+        'xfce4-power-manager'  # Power manager for Xfce desktop
     )
     GUI_PACKAGES+=(
-        'pavucontrol'   # PulseAudio Volume Control
-        'vlc'   # Multi-platform MPEG, VCD/DVD, and DivX player
-        'xorg-xinit'    # X.Org initialisation program
+        'pavucontrol' # PulseAudio Volume Control
+        'vlc'         # Multi-platform MPEG, VCD/DVD, and DivX player
+        'xorg-xinit'  # X.Org initialisation program
     )
     AUR_PACKAGES+=(
-        'pulseaudio-ctl'    # Control pulseaudio volume from the shell or mapped to keyboard shortcuts
+        'pulseaudio-ctl' # Control pulseaudio volume from the shell or mapped to keyboard shortcuts
     )
 fi
-
 
 function installAurPackages() {
     banner "I will install the AUR packages"
@@ -137,7 +134,7 @@ function installAurPackages() {
 }
 
 function installYay() {
-    if pacman -Qs yay > /dev/null ; then
+    if pacman -Qs yay >/dev/null; then
         return 0
     fi
     sudo -u "$SUDO_USER" -- sh -c "
@@ -162,6 +159,18 @@ function installOhMyZsh() {
     cd - &>/dev/null"
 }
 
+function installTmuxPlugins() {
+    banner "I will install the tmux plugins"
+    sudo -u "$NORMAL_USER" -- sh -c "
+    set -e
+    cd
+    rm -rf .tmux
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
+    "
+}
+
 function configurePacman() {
     sed -i 's/#Color/Color\nILoveCandy/g' /etc/pacman.conf
     sed -i 's/#TotalDownload/TotalDownload/g' /etc/pacman.conf
@@ -171,6 +180,7 @@ function installI3blocks() {
 
     banner "I will install i3blocks"
     sudo -u "$NORMAL_USER" -- sh -c "
+    rm -rf ~/.config/i3blocks/blocks
     git clone https://github.com/vivien/i3blocks-contrib.git ~/.config/i3blocks/blocks
     "
 }
@@ -180,20 +190,16 @@ function installPackages() {
     configurePacman
     packageIterator "pacman" "${BASE_PACKAGES[@]}"
 
-   
     banner "I will install the GUI packages"
     packageIterator "pacman" "${GUI_PACKAGES[@]}"
 
     installYay
 }
 
-
-
-
-
-#installPackages
-#installAurPackages
-#installOhMyZsh
+# installPackages
+# installAurPackages
+# installOhMyZsh
+installTmuxPlugins
 installI3blocks
 
 banner "Done :)"
