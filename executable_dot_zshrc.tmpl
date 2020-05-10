@@ -73,6 +73,15 @@ ENABLE_CORRECTION="true"
 #Colorize supports pygmentize and chroma as syntax highlighter
 ZSH_COLORIZE_TOOL=chroma
 
+
+# Set fzf installation directory path
+export FZF_BASE=~/.fzf.zsh
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# export DISABLE_FZF_KEY_BINDINGS="true"
+
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -91,6 +100,7 @@ plugins=(
   gitfast
   safe-paste
   tmux
+  fzf
   ) 
 
 source $ZSH/oh-my-zsh.sh
@@ -145,6 +155,9 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 autoload -U compinit && compinit
 
