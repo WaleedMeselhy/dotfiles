@@ -154,11 +154,15 @@ function installOhMyZsh() {
 
     sudo -u "$NORMAL_USER" -- sh -c "
     rm -rf ~/.oh-my-zsh
+    rm -rf ~/.fzf
+    rm -f ~/.fzf.zsh
     $(curl -fsSL $URL)
     "
 
     sudo -u "$NORMAL_USER" -- sh -c "
     set -e
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --all      
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
     git clone https://github.com/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search
