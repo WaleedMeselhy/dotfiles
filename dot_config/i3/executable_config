@@ -167,6 +167,9 @@ bindsym $mod+Shift+r restart
 # Lock screen
 bindsym $mod+Shift+x exec ~/.scripts/lock.sh
 
+# Change screen layout
+bindsym $mod+Shift+d exec ~/.scripts/display.sh
+
 # Resize window (you can also use the mouse for that)
 mode "resize"
 {
@@ -239,7 +242,6 @@ bar
 }
 # Startup programs
 exec_always --no-startup-id ~/.scripts/wallpapers.sh
-#exec_always --no-startup-id ~/.scripts/monitors.sh
 exec_always --no-startup-id nm-applet & 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back waled!" -i ~/.images/icons8-dog-100.png
@@ -254,5 +256,5 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 exec --no-startup-id "setxkbmap -layout us,ara -option grp:alt_shift_toggle"
 
-exec --no-startup-id "sh -c 'sleep 1; exec xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1366x768 --pos 1920x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal & picom --config ~/.config/picom/picom.conf'"
+exec_always --no-startup-id "sh -c 'sleep 1; exec ~/.scripts/.screenlayout/dual.sh & picom --config ~/.config/picom/picom.conf'"
 
