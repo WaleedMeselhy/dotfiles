@@ -2,7 +2,6 @@ export LC_ALL=en_US.UTF-8
 export TERMINAL=alacritty
 export PAGER=less
 export VISUAL=nano
-export TERM="xterm-256color"
 export GPG_TTY=$(tty)
 export LESS_TERMCAP_md=$'\e[1;36m'
 export LESS_TERMCAP_me=$'\e[0m'
