@@ -95,7 +95,6 @@ AUR_PACKAGES=(
     'xbindkeys'                  # Launch shell commands with your keyboard or your mouse under X
     'gotop'                      # Another terminal based graphical activity monitor
     'nerd-fonts-source-code-pro' # Patched font SourceCodePro from nerd-fonts library
-    'oh-my-zsh-git'              # A community-driven framework for managing your zsh configuration
     'mint-themes-git'            # Linux Mint themes
     'mint-y-icons'               # A flat, colorful, and modern theme based on Paper and Moka
     'git-cola'                   # A powerful GUI for Git
@@ -151,12 +150,12 @@ function installYay() {
 function installOhMyZsh() {
     local URL='https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh'
     banner "I will install Oh My Zsh and plugins"
-
+    chsh "$NORMAL_USER" -s $(which zsh)
     sudo -u "$NORMAL_USER" -- sh -c "
     rm -rf ~/.oh-my-zsh
     rm -rf ~/.fzf
     rm -f ~/.fzf.zsh
-    $(curl -fsSL $URL)
+    $(curl -fsSL $URL) --unattended
     "
 
     sudo -u "$NORMAL_USER" -- sh -c "
