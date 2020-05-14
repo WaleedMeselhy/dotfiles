@@ -127,16 +127,21 @@ DEFAULT_COLOR="#ffffff"
 ## SUBSCRIBE=1 requires interval=persist and always uses LONG_FORMAT
 #SUBSCRIBE=0
 
+[calendar]
+interval=3600
+LABEL= 
+DATEFMT=+%a %d.%m.%Y
+SHORTFMT=+%a %d.%m.%Y
+HEIGHT=230
+WIDTH=300
 
 [time]
 command=date '+%I:%M'
 interval=1
 label=<span color="#ffb86c"> </span>
 
-[date]
-command=date '+%A %e'
-interval=60
-label=<span color="#8be9fd"> </span>
+
+
 
 [shutdown_menu]
 full_text=<span color="#a9e185"> </span>
