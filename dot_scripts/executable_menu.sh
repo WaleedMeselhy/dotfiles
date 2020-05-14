@@ -82,7 +82,7 @@ function check_launcher() {
 }
 
 # Parse CLI arguments
-while getopts "hcp:" option; do
+while getopts "hcpm:" option; do
   case "${option}" in
     h) echo "${usage}"
        exit 0
@@ -91,6 +91,8 @@ while getopts "hcp:" option; do
        ;;
     p) preferred_launcher="${OPTARG}"
        check_launcher "${preferred_launcher}"
+       ;;
+    m) menus_options="${OPTARG}"
        ;;
     *) exit 1
        ;;
@@ -109,15 +111,10 @@ if ! command_exists systemctl ; then
 fi
 
 # menu defined as an associative array
-typeset -A menu
-
 # Menu with keys/commands
-menu=(
-  [Dual]="~/.scripts/.screenlayout/dual.sh"
-  [External]="~/.scripts/.screenlayout/external.sh"
-  [Laptop]="~/.scripts/.screenlayout/laptop.sh"
-  [Cancel]=""
-)
+typeset -A menu=$menus_options
+
+
 menu_nrows=${#menu[@]}
 
 # Menu entries that may trigger a confirmation message

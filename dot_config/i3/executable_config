@@ -168,7 +168,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+x exec ~/.scripts/lock.sh
 
 # Change screen layout
-bindsym $mod+Shift+d exec ~/.scripts/display.sh
+bindsym $mod+Shift+d exec ~/.scripts/menu.sh -m  '([Dual]="~/.scripts/.screenlayout/dual.sh" [External]="~/.scripts/.screenlayout/external.sh" [Laptop]="~/.scripts/.screenlayout/laptop.sh" [Cancel]="")'
 
 # Resize window (you can also use the mouse for that)
 mode "resize"
