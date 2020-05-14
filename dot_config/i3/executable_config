@@ -170,6 +170,9 @@ bindsym $mod+Shift+x exec ~/.scripts/lock.sh
 # Change screen layout
 bindsym $mod+Shift+d exec ~/.scripts/menu.sh -m  '([Dual]="~/.scripts/.screenlayout/dual.sh" [External]="~/.scripts/.screenlayout/external.sh" [Laptop]="~/.scripts/.screenlayout/laptop.sh" [Cancel]="")'
 
+# control sound source and toggle sound on and off
+bindsym $mod+Shift+s exec ~/.scripts/menu.sh -m  '([Change source]="~/.scripts/sound_control.sh toggle_source" [Toggle sound]="~/.scripts/sound_control.sh toggle_sound" [Cancel]="")'
+
 # Resize window (you can also use the mouse for that)
 mode "resize"
 {
