@@ -91,8 +91,13 @@ set $workspace9 " 9:  "
 set $workspace0 " 10:  "
 
 
-set $monitor_one eDP-1-1
-set $monitor_two HDMI-0
+set $monitor_one {{ .monitor1 }}
+{{- if ne .monitor2 "" }}
+    set $monitor_two {{ .monitor2 }}
+{{ else }}
+    set $monitor_two {{ .monitor1 }}
+{{- end }}
+
 
 # Bind the workspaces for monitor one
 workspace $workspace1 output $monitor_one
@@ -213,7 +218,10 @@ bar
     i3bar_command i3bar
     font pango: Fira Code, Regular 14
     output $monitor_one
+    {{- if ne .monitor2 "" }}
     tray_output $monitor_two
+    {{- end }}
+
     colors
     {
 #           Border Background Text
@@ -224,6 +232,9 @@ bar
             background          $bg
     }
 }
+
+
+{{- if ne .monitor2 "" }}
 
 # Start i3blocks to display a workspace bar
 bar
@@ -243,6 +254,9 @@ bar
             background          $bg
     }
 }
+{{- end }}
+
+
 # Startup programs
 exec_always --no-startup-id ~/.scripts/wallpapers.sh
 exec_always --no-startup-id nm-applet & 
