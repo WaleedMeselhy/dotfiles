@@ -307,4 +307,5 @@ bind -n M-Down select-pane -D
 
 #run-shell ~/clone/path/yank.tmux
 
-bind -T prefix C-r respawn-pane -k
+#bind -T prefix C-r respawn-pane -k
+bind -T prefix C-r clear-history
