@@ -113,7 +113,7 @@ signal=10
 #SCONTROL=[determined automatically]
 ##exposed format variables: ${SYMB}, ${VOL}, ${INDEX}, ${NAME}
 #LONG_FORMAT="${SYMB} ${VOL}% [${INDEX}:${NAME}]"
-#SHORT_FORMAT="${SYMB} ${VOL}% [${INDEX}]"
+SHORT_FORMAT="${SYMB} ${VOL}% [${NAME}]"
 AUDIO_HIGH_SYMBOL= 
 AUDIO_MED_THRESH=50
 AUDIO_MED_SYMBOL=
