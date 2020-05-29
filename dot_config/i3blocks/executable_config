@@ -59,10 +59,13 @@ instance=wlp11s0f3u1
 interval=5
 label=<span color="#ffb86c"> </span>
 
-[new-vpn]
-command=~/.config/i3blocks/blocks/openvpn/openvpn
-interval=1
-label=<span color="#8be9fd"> </span>
+
+
+[nm-vpn]
+#init_color=#FFFF00
+#on_color=#00FF00
+label=VPN: 
+interval=5
 
 [home]
 command=df -h /home | awk 'FNR==2{print $4}'
