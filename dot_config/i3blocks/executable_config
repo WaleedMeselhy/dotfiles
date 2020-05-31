@@ -59,7 +59,12 @@ instance=wlp11s0f3u1
 interval=5
 label=<span color="#ffb86c"> </span>
 
-
+[bandwidth]
+interval=5
+INTERFACE=wlp2s0
+INLABEL=<span color="#dfe85f"></span> 
+OUTLABEL=<span color="#57d7e6"></span>
+TREAT_UNKNOWN_AS_UP=0
 
 [nm-vpn]
 #init_color=#FFFF00
