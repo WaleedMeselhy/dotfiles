@@ -103,9 +103,9 @@ SENSOR_CHIP="coretemp-isa-0000"
 label=<span color="#8be9fd"> </span>
 
 [memory]
-command=free -h --si | awk 'FNR==2{ print $0 }' | awk '{ print $7 }'
+# command=free -h --si | awk 'FNR==2{ print $0 }' | awk '{ print $7 }'
 interval=2
-label=<span color="#a9e185"> </span>
+label=<span color="#a9e185"> </span>
 
 [microphone]
 command=~/.config/i3blocks/microphone
