@@ -13,6 +13,9 @@ if [ -z "$SUDO_USER" ]; then
     exit 1
 fi
 
+banner "I will configure fstrim"
+systemctl enable fstrim.timer
+
 banner "I will configure docker"
 usermod -aG docker {{ .chezmoi.username }}
 systemctl enable docker
