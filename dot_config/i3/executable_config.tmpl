@@ -92,26 +92,26 @@ set $workspace0 " 10:  "
 
 
 set $monitor_one {{ .monitor1 }}
-{{- if ne .monitor2 "" }}
-    set $monitor_two {{ .monitor2 }}
-{{ else }}
-    set $monitor_two {{ .monitor1 }}
+set $monitor_two {{ .monitor2 }}
+
+{{- if and (ne .monitor1 "") ( ne .monitor2 "")}}
+    # Bind the workspaces for monitor one
+    workspace $workspace1 output $monitor_one
+    workspace $workspace3 output $monitor_one
+    workspace $workspace5 output $monitor_one
+    workspace $workspace7 output $monitor_one
+    workspace $workspace9 output $monitor_one
+
+    # Bind the workspaces for monitor two
+    workspace $workspace2 output $monitor_two
+    workspace $workspace4 output $monitor_two
+    workspace $workspace6 output $monitor_two
+    workspace $workspace8 output $monitor_two
+    workspace $workspace0 output $monitor_two
+
 {{- end }}
 
 
-# Bind the workspaces for monitor one
-workspace $workspace1 output $monitor_one
-workspace $workspace3 output $monitor_one
-workspace $workspace5 output $monitor_one
-workspace $workspace7 output $monitor_one
-workspace $workspace9 output $monitor_one
-
-# Bind the workspaces for monitor two
-workspace $workspace2 output $monitor_two
-workspace $workspace4 output $monitor_two
-workspace $workspace6 output $monitor_two
-workspace $workspace8 output $monitor_two
-workspace $workspace0 output $monitor_two
 
 
 # Switch to workspace
@@ -217,7 +217,10 @@ bar
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
     font pango: FontAwesome, Regular 15
+    
+    {{- if ne .monitor1 "" }}
     output $monitor_one
+    {{- end }}
     {{- if ne .monitor2 "" }}
     tray_output $monitor_two
     {{- end }}
