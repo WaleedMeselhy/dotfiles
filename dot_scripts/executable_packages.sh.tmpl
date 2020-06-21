@@ -62,7 +62,8 @@ BASE_PACKAGES=(
     'thefuck'                # Magnificent app which corrects your previous console command
     'gnome-keyring'          # Stores passwords and encryption keys
     'intel-ucode'            # Microcode update files for Intel CPUs
-
+    'mtpfs'                  # A FUSE filesystem that supports reading and writing from any MTP device
+    'gvfs-mtp'               # Virtual filesystem implementation for GIO (MTP backend; Android, media player)
 )
 
 GUI_PACKAGES=(
@@ -120,6 +121,7 @@ AUR_PACKAGES=(
     'ttf-ms-fonts'                      # Core TTF Fonts from Microsoft
     'simplenote-electron-bin'           # The simplest way to keep notes
     'postman'                           # Build, test, and document your APIs faster
+    'jmtpfs'                            # FUSE and libmtp based filesystem for accessing MTP (Media Transfer Protocol) devices
 )
 
 if [ "$(uname -m)" == 'x86_64' ]; then
