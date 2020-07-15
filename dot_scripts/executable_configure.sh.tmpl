@@ -37,6 +37,16 @@ polkit.addRule(function(action, subject) {
 EOT
 fi
 
+# change diff tool
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path "/usr/bin/p4merge"
+git config --global difftool.prompt false
+
+# change merge tool
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "/usr/bin/p4merge"
+git config --global mergetool.prompt false
+
 tee -a /etc/X11/xorg.conf > /dev/null <<EOT
 Section "ServerLayout"
         Identifier      "X.org Configured"
