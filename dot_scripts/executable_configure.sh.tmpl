@@ -37,7 +37,7 @@ polkit.addRule(function(action, subject) {
 EOT
 fi
 
-# change diff tool
+banner "I will change default diff tool and merge tool to p4merge"
 git config --global diff.tool p4merge
 git config --global difftool.p4merge.path "/usr/bin/p4merge"
 git config --global difftool.prompt false
