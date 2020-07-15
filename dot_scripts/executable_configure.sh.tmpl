@@ -107,3 +107,12 @@ Section "Screen"
         Device     "card_intel"
 EndSection
 EOT
+
+tee -a /etc/X11/xorg.conf.d/30-touchpad.conf  > /dev/null <<EOT
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+EndSection
+EOT
