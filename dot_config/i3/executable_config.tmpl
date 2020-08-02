@@ -265,7 +265,6 @@ exec_always --no-startup-id ~/.scripts/wallpapers.sh
 exec_always --no-startup-id nm-applet & 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back waled!" -i ~/.images/icons8-dog-100.png
-exec --no-startup-id clipit
 exec --no-startup-id redshift-gtk
 # change volume or toggle mute
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
