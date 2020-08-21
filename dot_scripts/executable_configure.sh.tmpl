@@ -9,9 +9,10 @@ $ sudo ./configure.sh"
 source $(dirname "$0")/shared.sh
 
 if [ -z "$SUDO_USER" ]; then
-    echo "$HELP"
-    exit 1
+        echo "$HELP"
+        exit 1
 fi
+NORMAL_USER="{{ .chezmoi.username }}"
 
 banner "I will configure fstrim"
 systemctl enable fstrim.timer
@@ -27,7 +28,7 @@ snap wait system seed.loaded
 banner "I will configure mount a partition without asking for my password"
 
 if [ ! -f "/etc/polkit-1/rules.d/99-mount-partitions.rules" ]; then
-    cat <<EOT >>/etc/polkit-1/rules.d/99-mount-partitions.rules
+        cat <<EOT >>/etc/polkit-1/rules.d/99-mount-partitions.rules
 // Password-less mounting of local partitions
 polkit.addRule(function(action, subject) {
     if (action.id == "org.freedesktop.udisks2.filesystem-mount-system" && subject.isInGroup("wheel")) {
@@ -47,7 +48,7 @@ git config --global merge.tool p4merge
 git config --global mergetool.p4merge.path "/usr/bin/p4merge"
 git config --global mergetool.prompt false
 
-tee -a /etc/X11/xorg.conf > /dev/null <<EOT
+tee -a /etc/X11/xorg.conf >/dev/null <<EOT
 Section "ServerLayout"
         Identifier      "X.org Configured"
         Screen          0  "screen_nvidia"
@@ -108,7 +109,7 @@ Section "Screen"
 EndSection
 EOT
 
-tee -a /etc/X11/xorg.conf.d/30-touchpad.conf  > /dev/null <<EOT
+tee -a /etc/X11/xorg.conf.d/30-touchpad.conf >/dev/null <<EOT
 Section "InputClass"
     Identifier "touchpad"
     Driver "libinput"
@@ -116,3 +117,8 @@ Section "InputClass"
     Option "Tapping" "on"
 EndSection
 EOT
+
+sudo -u "$NORMAL_USER" -- sh -c "
+    set -e
+    python ~/.scripts/get_wallpapers.py
+    "
