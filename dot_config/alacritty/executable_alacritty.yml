@@ -12,6 +12,7 @@ env:
 
 # Window configurations
 window:
+  dynamic_title: true
   dimensions:
     columns: 0
     lines: 0
@@ -109,7 +110,6 @@ cursor:
   style: Block
   unfocused_hollow: true
 
-dynamic_title: true
 
 live_config_reload: true
 
