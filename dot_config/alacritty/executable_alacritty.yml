@@ -86,7 +86,7 @@ colors:
 
 
 # Visual bell
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
