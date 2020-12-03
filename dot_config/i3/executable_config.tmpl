@@ -32,10 +32,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show drun -columns 3
 
 # Move between windows
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # Alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -56,7 +56,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+h split h
 
 # Split in vertical orientation
 bindsym $mod+v split v
@@ -216,13 +216,13 @@ bar
     position bottom
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 15
+    font pango: FontAwesome, Regular 5
     
     {{- if ne .monitor1 "" }}
-    output $monitor_one
+    output $monitor_two
     {{- end }}
     {{- if ne .monitor2 "" }}
-    tray_output $monitor_two
+    tray_output $monitor_one
     {{- end }}
 
     colors
@@ -245,7 +245,7 @@ bar
     position bottom
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 10
+    font pango: FontAwesome, Regular 8
     output $monitor_two
     colors
     {
@@ -279,7 +279,8 @@ exec --no-startup-id "setxkbmap -layout us,ara -option grp:alt_shift_toggle"
 
 exec_always --no-startup-id exec ~/.scripts/.screenlayout/dual.sh
 
-exec_always --no-startup-id "sh -c 'sleep 1; exec  picom --config ~/.config/picom/picom.conf'"
+exec_always --no-startup-id "sh -c 'sleep 1; exec  picom --config ~/.config/picom/picom.conf  --xrender-sync-fence'"
 
 exec_always --no-startup-id exec clipmenud
 bindsym $mod+Shift+v exec clipmenu
+bindsym Print exec scrot $HOME/Images/`date +%Y-%m-%d_%H:%M:%S`.png

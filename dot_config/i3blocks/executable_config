@@ -54,13 +54,13 @@ interval=2
 color=#ff79c6
 
 [wifi]
-instance=wlp2s0
+instance=wlp0s20f3
 interval=5
 label=<span color="#ffb86c"> </span>
 
 [bandwidth]
 interval=5
-INTERFACE=wlp2s0
+INTERFACE=wlp0s20f3
 INLABEL=<span color="#dfe85f"></span> 
 OUTLABEL=<span color="#57d7e6"></span>
 TREAT_UNKNOWN_AS_UP=0

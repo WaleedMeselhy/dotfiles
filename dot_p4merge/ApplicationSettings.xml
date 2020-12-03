@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--perforce-xml-version=1.0-->
-<PropertyList varName="ApplicationSettings" IsManaged="TRUE">
+<PropertyList IsManaged="TRUE" varName="ApplicationSettings">
  <Font varName="ApplicationFont">
   <family>Fira Code</family>
-  <pointSize>18</pointSize>
-  <weight>true</weight>
+  <pointSize>8</pointSize>
+  <weight>Normal</weight>
   <italic>false</italic>
  </Font>
  <String varName="CharSet">none</String>
- <PropertyList varName="Connection" IsManaged="TRUE">
+ <PropertyList IsManaged="TRUE" varName="Connection">
   <String varName="ApplicationLanguage">en</String>
  </PropertyList>
  <Bool varName="DarkTheme">true</Bool>
  <String varName="DiffOption">dl</String>
  <Font varName="Font">
   <family>Fira Code</family>
-  <pointSize>22</pointSize>
-  <weight>true</weight>
+  <pointSize>8</pointSize>
+  <weight>Normal</weight>
   <italic>false</italic>
  </Font>
- <PropertyList varName="Icon" IsManaged="TRUE">
+ <PropertyList IsManaged="TRUE" varName="Icon">
+  <Double varName="ScaleCustomValue">0.5</Double>
   <Int varName="ScaleOption">0</Int>
  </PropertyList>
  <Bool varName="InlineDiffsEnabled">true</Bool>
  <String varName="LineEnding">Unix</String>
- <PropertyList varName="PreferencesDialog" IsManaged="TRUE">
-  <ByteArray varName="WindowGeometry">AdnQywADAAAAAAAAAAAAAAAABVUAAAL/AAADWgAAAJYAAAW5AAADUAAAAAEABAAABVYAAAAAAAAAAAAABVUAAAL/</ByteArray>
+ <PropertyList IsManaged="TRUE" varName="PreferencesDialog">
+  <ByteArray varName="WindowGeometry">AdnQywADAAAAAAVYAAAAPQAADNsAAAVzAAAFWgAAAD8AAAzZAAAFcQAAAAEAAAAAB4AAAAVaAAAAPwAADNkAAAVx</ByteArray>
  </PropertyList>
  <Bool varName="ShowTabsSpaces">false</Bool>
  <Bool varName="TabInsertsSpaces">false</Bool>
  <Int varName="TabWidth">8</Int>
- <PropertyList varName="Windows" IsManaged="TRUE">
-  <PropertyList varName="CompareDialog" IsManaged="TRUE">
-   <String varName="DefaultPath">/home/waled</String>
-   <ByteArray varName="WindowGeometry">AdnQywADAAAAAAb5AAAA/QAACKUAAAGDAAAG+wAAAP8AAAijAAABgQAAAAAAAAAABQAAAAb7AAAA/wAACKMAAAGB</ByteArray>
+ <PropertyList IsManaged="TRUE" varName="Windows">
+  <PropertyList IsManaged="TRUE" varName="CompareDialog">
+   <String varName="DefaultPath">/home/waled/Downloads/vimclass</String>
+   <ByteArray varName="WindowGeometry">AdnQywADAAAAAACiAAAAPQAAAt8AAAFyAAAApAAAAD8AAALdAAABcAAAAAAAAAAAA48AAACkAAAAPwAAAt0AAAFw</ByteArray>
   </PropertyList>
-  <PropertyList varName="Diff" IsManaged="TRUE">
+  <PropertyList IsManaged="TRUE" varName="Diff">
    <Bool varName="DiffCombined">false</Bool>
-   <ByteArray varName="WindowGeometry">AdnQywADAAAAAAVWAAAAAAAAClUAAALPAAAIrwAAAAUAAApQAAACvAAAAAAABAAABQAAAAVWAAAAAAAAClUAAALP</ByteArray>
-   <ByteArray varName="WindowState">AAAA/wAAAAD9AAAAAAAABQAAAAKiAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAiAE0AYQBpAG4AVwBpAG4AZABvAHcAVABvAG8AbABiAGEAcgEAAAAA/////wAAAAAAAAAA</ByteArray>
+   <ByteArray varName="WindowGeometry">AdnQywADAAAAAAAAAAAAAAAAA44AAAH////8DwAAABQAAAOOAAAESwAAAAAABAAAA48AAAAAAAAAAAAAA44AAAH/</ByteArray>
+   <ByteArray varName="WindowState">AAAA/wAAAAD9AAAAAAAAA48AAAHGAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAiAE0AYQBpAG4AVwBpAG4AZABvAHcAVABvAG8AbABiAGEAcgEAAAAA/////wAAAAAAAAAA</ByteArray>
   </PropertyList>
-  <PropertyList varName="Merge" IsManaged="TRUE">
+  <PropertyList IsManaged="TRUE" varName="Merge">
    <Bool varName="ShowBase">true</Bool>
-   <ByteArray varName="WindowGeometry">AdnQywADAAAAAAAAAAAAAAAABVUAAAL/AAAEBQAAAAgAAAVNAAAC5wAAAAEABAAABVYAAAAAAAAAAAAABVUAAAL/</ByteArray>
-   <ByteArray varName="WindowState">AAAA/wAAAAD9AAAAAAAABVYAAALSAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAiAE0AYQBpAG4AVwBpAG4AZABvAHcAVABvAG8AbABiAGEAcgEAAAAA/////wAAAAAAAAAA</ByteArray>
+   <ByteArray varName="WindowGeometry">AdnQywADAAAAAAILAAAABQAAAocAAAHsAAACDQAAAAcAAAKFAAAB6gAAAAAAAAAAA48AAAINAAAABwAAAoUAAAHq</ByteArray>
+   <ByteArray varName="WindowState">AAAA/wAAAAD9AAAAAAAAAHkAAAGqAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAiAE0AYQBpAG4AVwBpAG4AZABvAHcAVABvAG8AbABiAGEAcgEAAAAA/////wAAAAAAAAAA</ByteArray>
   </PropertyList>
-  <PropertyList varName="MergeDiff" IsManaged="TRUE">
+  <PropertyList IsManaged="TRUE" varName="MergeDiff">
    <Bool varName="ShowLineNumbers">false</Bool>
+   <Bool varName="ShowSyntaxHighlighting">true</Bool>
   </PropertyList>
  </PropertyList>
 </PropertyList>
