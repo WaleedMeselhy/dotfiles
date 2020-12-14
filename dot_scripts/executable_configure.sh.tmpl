@@ -48,66 +48,66 @@ git config --global merge.tool p4merge
 git config --global mergetool.p4merge.path "/usr/bin/p4merge"
 git config --global mergetool.prompt false
 
-tee -a /etc/X11/xorg.conf >/dev/null <<EOT
-Section "ServerLayout"
-        Identifier      "X.org Configured"
-        Screen          0  "screen_nvidia"
-        Inactive        "card_intel"
-        InputDevice     "Mouse0" "CorePointer"
-        InputDevice     "Keyboard0" "CoreKeyboard"
-EndSection
+# tee -a /etc/X11/xorg.conf >/dev/null <<EOT
+# Section "ServerLayout"
+#         Identifier      "X.org Configured"
+#         Screen          0  "screen_nvidia"
+#         Inactive        "card_intel"
+#         InputDevice     "Mouse0" "CorePointer"
+#         InputDevice     "Keyboard0" "CoreKeyboard"
+# EndSection
 
-Section "Files"
-        ModulePath   "/usr/lib/xorg/modules"
-        FontPath     "/usr/share/fonts/X11/misc"
-        FontPath     "/usr/share/fonts/X11/cyrillic"
-        FontPath     "/usr/share/fonts/X11/100dpi/:unscaled"
-        FontPath     "/usr/share/fonts/X11/75dpi/:unscaled"
-        FontPath     "/usr/share/fonts/X11/Type1"
-        FontPath     "/usr/share/fonts/X11/100dpi"
-        FontPath     "/usr/share/fonts/X11/75dpi"
-        FontPath     "built-ins"
-EndSection
+# Section "Files"
+#         ModulePath   "/usr/lib/xorg/modules"
+#         FontPath     "/usr/share/fonts/X11/misc"
+#         FontPath     "/usr/share/fonts/X11/cyrillic"
+#         FontPath     "/usr/share/fonts/X11/100dpi/:unscaled"
+#         FontPath     "/usr/share/fonts/X11/75dpi/:unscaled"
+#         FontPath     "/usr/share/fonts/X11/Type1"
+#         FontPath     "/usr/share/fonts/X11/100dpi"
+#         FontPath     "/usr/share/fonts/X11/75dpi"
+#         FontPath     "built-ins"
+# EndSection
 
-Section "Module"
-        Load  "glx"
-EndSection
+# Section "Module"
+#         Load  "glx"
+# EndSection
 
-Section "InputDevice"
-        Identifier  "Keyboard0"
-        Driver      "kbd"
-EndSection
+# Section "InputDevice"
+#         Identifier  "Keyboard0"
+#         Driver      "kbd"
+# EndSection
 
-Section "InputDevice"
-        Identifier  "Mouse0"
-        Driver      "mouse"
-        Option      "Protocol" "auto"
-        Option      "Device" "/dev/input/mice"
-        Option      "ZAxisMapping" "4 5 6 7"
-EndSection
+# Section "InputDevice"
+#         Identifier  "Mouse0"
+#         Driver      "mouse"
+#         Option      "Protocol" "auto"
+#         Option      "Device" "/dev/input/mice"
+#         Option      "ZAxisMapping" "4 5 6 7"
+# EndSection
 
-Section "Device"
-        Identifier  "card_nvidia"
-        Driver      "nvidia"
-        BusID       "PCI:1:0:0"
-EndSection
+# Section "Device"
+#         Identifier  "card_nvidia"
+#         Driver      "nvidia"
+#         BusID       "PCI:1:0:0"
+# EndSection
 
-Section "Device"
-        Identifier  "card_intel"
-        Driver      "modesetting"
-        BusID       "PCI:0:2:0"
-EndSection
+# Section "Device"
+#         Identifier  "card_intel"
+#         Driver      "modesetting"
+#         BusID       "PCI:0:2:0"
+# EndSection
 
-Section "Screen"
-        Identifier "screen_nvidia"
-        Device     "card_nvidia"
-EndSection
+# Section "Screen"
+#         Identifier "screen_nvidia"
+#         Device     "card_nvidia"
+# EndSection
 
-Section "Screen"
-        Identifier "screen_intel"
-        Device     "card_intel"
-EndSection
-EOT
+# Section "Screen"
+#         Identifier "screen_intel"
+#         Device     "card_intel"
+# EndSection
+# EOT
 
 tee -a /etc/X11/xorg.conf.d/30-touchpad.conf >/dev/null <<EOT
 Section "InputClass"

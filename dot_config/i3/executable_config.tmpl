@@ -216,10 +216,10 @@ bar
     position bottom
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 5
+    font pango: FontAwesome, Regular 8
     
     {{- if ne .monitor1 "" }}
-    output $monitor_two
+    output $monitor_one
     {{- end }}
     {{- if ne .monitor2 "" }}
     tray_output $monitor_one
@@ -245,7 +245,7 @@ bar
     position bottom
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 8
+    font pango: FontAwesome, Regular 10
     output $monitor_two
     colors
     {
@@ -262,7 +262,7 @@ bar
 
 # Startup programs
 # exec_always --no-startup-id ~/.scripts/wallpapers.sh
-exec --no-startup-id while true; do feh --bg-scale --recursive --randomize ~/quotefancy/* ; sleep 1200; done &
+exec --no-startup-id while true; do feh --bg-scale --recursive --randomize ~/quotefancy/* ; sleep 120; done &
 exec_always --no-startup-id nm-applet & 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id notify-send "Welcome back waled!" -i ~/.images/icons8-dog-100.png
