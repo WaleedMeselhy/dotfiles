@@ -7,6 +7,21 @@
 # |_|____/   \___\___/|_| |_|_| |_|\__, |
 #                                  |___/
 
+exec --no-startup-id  $HOME/.config/i3/i3-master-stack/i3_master
+# swap to master node
+bindsym $mod+m nop swap master
+# go to master node
+bindsym $mod+shift+m nop go master
+# enable/disable master layout in current workspace
+#bindsym $mod+alt+m nop master toggle
+
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
 # Default modkey
 set $mod Mod4
 
@@ -213,7 +228,7 @@ client.placeholder          $bg      $bg        $cyan    $bg
 # Start i3blocks to display a workspace bar
 bar
 {
-    position bottom
+    position top
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
     font pango: FontAwesome, Regular 8
@@ -242,7 +257,7 @@ bar
 # Start i3blocks to display a workspace bar
 bar
 {
-    position bottom
+    position top
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
     font pango: FontAwesome, Regular 10

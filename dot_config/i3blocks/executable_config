@@ -13,6 +13,11 @@ color=#ffffff
 separator_block_width=20
 markup=pango
 
+[window]
+command=xtitle -s
+interval=persist
+
+
 [keyindicator]
 #Allowed keys are CAPS and NUM
 KEY=CAPS

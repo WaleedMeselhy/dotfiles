@@ -35,8 +35,8 @@ function sound_source() {
   done
 }
 
-#alias k='kubectl'
-#export KUBECONFIG="/home/waled/stage.config"
+alias k='kubectl'
+export KUBECONFIG="/home/{{ .chezmoi.username }}/work/kubestaging"
 #kubectl config --kubeconfig=/home/waled/stage.config use-context stage.yonohub.k8s.local
 #export id_file="/home/waleed/k8s-stage"
 #alias ssh='ssh -i $id_file'
