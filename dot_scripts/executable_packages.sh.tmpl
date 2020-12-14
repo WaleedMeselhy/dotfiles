@@ -22,40 +22,43 @@ BASE_PACKAGES=(
     'vi'
     'vim'
     'gedit'
-    'iw'                # nl80211 based CLI configuration utility for wireless devices
-    'xterm'             # X Terminal Emulator
-    'wireless_tools'    # Tools allowing to manipulate the Wireless Extensions
-    'sysstat'           # a collection of performance monitoring tools
-    'lsd'               # The next gen ls command
-    'acpi'              # enable special ACPI functions or add information to /proc or /sys
-    'atool'             # A script for managing file archives of various types
-    'blueman'           # a full featured Bluetooth manager
-    'bluez-utils'       # Development and debugging utilities for the bluetooth protocol stack
-    'curl'              # An URL retrieval utility and library
-    'dhcpcd'            # DHCP client daemon
-    'ffmpegthumbnailer' # Lightweight video thumbnailer that can be used by file managers
-    'firewalld'         # Firewall daemon with D-Bus interface
-    'git'               # the fast distributed version control system
-    'go-tools'          # Developer tools for the Go programming language
-    'htop'              # Interactive process viewer
-    'jq'                # Command-line JSON processor
-    'less'              # A terminal based program for viewing text files
-    'mediainfo'         # Supplies technical and tag information about a video or audio file (CLI interface)
-    'neofetch'          # A CLI system information tool written in BASH that supports displaying images.
-    'openvpn'           # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-    'openssh'           # Premier connectivity tool for rgemote login with the SSH protocol
-    'pacman-contrib'    # Contributed scripts and tools for pacman systems
-    'poppler'           # PDF rendering library based on xpdf 3.0
-    'ranger'            # Simple, vim-like file manager
-    'tmux'              # A terminal multiplexer
-    'usbguard'          # Software framework for implementing USB device authorization policies
-    'whois'             # Intelligent WHOIS client
-    'zsh'               # A very advanced and programmable command interpreter (shell) for UNIX
-    'ntfs-3g'           # NTFS filesystem driver and utilities
-    'nemo'              # Cinnamon file manager (Nautilus fork)
-    'nemo-fileroller'   # File archiver extension for Nemo
-    'ttf-fira-code'     # Monospaced font with programming ligatures
-    'alsa-utils'        # Advanced Linux Sound Architecture - Utilities
+    'tlp'                    # Linux Advanced Power Management
+    'tlp-rdw'                # Linux Advanced Power Management - Radio Device Wizard
+    'x86_energy_perf_policy' # Read or write MSR_IA32_ENERGY_PERF_BIAS
+    'iw'                     # nl80211 based CLI configuration utility for wireless devices
+    'xterm'                  # X Terminal Emulator
+    'wireless_tools'         # Tools allowing to manipulate the Wireless Extensions
+    'sysstat'                # a collection of performance monitoring tools
+    'lsd'                    # The next gen ls command
+    'acpi'                   # enable special ACPI functions or add information to /proc or /sys
+    'atool'                  # A script for managing file archives of various types
+    'blueman'                # a full featured Bluetooth manager
+    'bluez-utils'            # Development and debugging utilities for the bluetooth protocol stack
+    'curl'                   # An URL retrieval utility and library
+    'dhcpcd'                 # DHCP client daemon
+    'ffmpegthumbnailer'      # Lightweight video thumbnailer that can be used by file managers
+    'firewalld'              # Firewall daemon with D-Bus interface
+    'git'                    # the fast distributed version control system
+    'go-tools'               # Developer tools for the Go programming language
+    'htop'                   # Interactive process viewer
+    'jq'                     # Command-line JSON processor
+    'less'                   # A terminal based program for viewing text files
+    'mediainfo'              # Supplies technical and tag information about a video or audio file (CLI interface)
+    'neofetch'               # A CLI system information tool written in BASH that supports displaying images.
+    'openvpn'                # An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
+    'openssh'                # Premier connectivity tool for rgemote login with the SSH protocol
+    'pacman-contrib'         # Contributed scripts and tools for pacman systems
+    'poppler'                # PDF rendering library based on xpdf 3.0
+    'ranger'                 # Simple, vim-like file manager
+    'tmux'                   # A terminal multiplexer
+    'usbguard'               # Software framework for implementing USB device authorization policies
+    'whois'                  # Intelligent WHOIS client
+    'zsh'                    # A very advanced and programmable command interpreter (shell) for UNIX
+    'ntfs-3g'                # NTFS filesystem driver and utilities
+    'nemo'                   # Cinnamon file manager (Nautilus fork)
+    'nemo-fileroller'        # File archiver extension for Nemo
+    'ttf-fira-code'          # Monospaced font with programming ligatures
+    'alsa-utils'             # Advanced Linux Sound Architecture - Utilities
     'base-devel'
     'networkmanager-openvpn' # NetworkManager VPN plugin for OpenVPN
     'docker'                 # utility to pack, ship and run any application as a lightweight container
@@ -66,9 +69,12 @@ BASE_PACKAGES=(
     'intel-ucode'            # Microcode update files for Intel CPUs
     'mtpfs'                  # A FUSE filesystem that supports reading and writing from any MTP device
     'gvfs-mtp'               # Virtual filesystem implementation for GIO (MTP backend; Android, media player)
+    'kubectl'                # A command line tool for communicating with a Kubernetes API server
 )
 
 GUI_PACKAGES=(
+    'gnome-calculator'            # GNOME Scientific calculator
+    'gnome-disk-utility'          # Disk Management Utility for GNOME
     'qbittorrent'                 # BitTorrent client
     'anki'                        # allows you to create, manage and review flashcards
     'scrot'                       # Simple command-line screenshot utility for X
@@ -100,6 +106,10 @@ GUI_PACKAGES=(
 )
 
 AUR_PACKAGES=(
+    'xtitle'                     # Outputs X window titles
+    'postman-bin'                # Build, test, and document your APIs faster
+    'slack-desktop'              # Slack Desktop (Beta) for Linux
+    'nordvpn-bin'                # NordVPN CLI tool for Linux
     'p4v'                        #Helix Visual Client (P4V) is a desktop app that provides access to versioned files in Helix Core through a graphical interface. It includes tools for merging and visualizing code evolution
     'xbindkeys'                  # Launch shell commands with your keyboard or your mouse under X
     'gotop'                      # Another terminal based graphical activity monitor

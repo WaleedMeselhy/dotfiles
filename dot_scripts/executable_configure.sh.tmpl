@@ -9,8 +9,8 @@ $ sudo ./configure.sh"
 source $(dirname "$0")/shared.sh
 
 if [ -z "$SUDO_USER" ]; then
-        echo "$HELP"
-        exit 1
+    echo "$HELP"
+    exit 1
 fi
 NORMAL_USER="{{ .chezmoi.username }}"
 
@@ -25,10 +25,20 @@ banner "I will configure snap"
 systemctl enable --now snapd.socket
 snap wait system seed.loaded
 
+banner "I will configure nordVPN"
+systemctl enable nordvpnd.service
+systemctl start nordvpnd.service
+
+banner "I will configure TLP"
+systemctl enable tlp.service
+systemctl mask systemd-rfkill.service
+systemctl mask systemd-rfkill.socket
+systemctl start tlp.service
+
 banner "I will configure mount a partition without asking for my password"
 
 if [ ! -f "/etc/polkit-1/rules.d/99-mount-partitions.rules" ]; then
-        cat <<EOT >>/etc/polkit-1/rules.d/99-mount-partitions.rules
+    cat <<EOT >>/etc/polkit-1/rules.d/99-mount-partitions.rules
 // Password-less mounting of local partitions
 polkit.addRule(function(action, subject) {
     if (action.id == "org.freedesktop.udisks2.filesystem-mount-system" && subject.isInGroup("wheel")) {
@@ -39,15 +49,17 @@ EOT
 fi
 
 banner "I will change default diff tool and merge tool to p4merge"
-git config --global diff.tool p4merge
-git config --global difftool.p4merge.path "/usr/bin/p4merge"
-git config --global difftool.prompt false
+sudo -u "$NORMAL_USER" -- sh -c "
+    set -e
+    git config --global diff.tool p4merge
+    git config --global difftool.p4merge.path \"/usr/bin/p4merge\"
+    git config --global difftool.prompt false
 
-# change merge tool
-git config --global merge.tool p4merge
-git config --global mergetool.p4merge.path "/usr/bin/p4merge"
-git config --global mergetool.prompt false
-
+    # change merge tool
+    git config --global merge.tool p4merge
+    git config --global mergetool.p4merge.path \"/usr/bin/p4merge\"
+    git config --global mergetool.prompt false
+    "
 # tee -a /etc/X11/xorg.conf >/dev/null <<EOT
 # Section "ServerLayout"
 #         Identifier      "X.org Configured"
