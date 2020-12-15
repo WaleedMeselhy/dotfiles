@@ -14,7 +14,8 @@ separator_block_width=20
 markup=pango
 
 [window]
-command=xtitle -s
+command=xtitle -s | cat
+
 interval=persist
 
 
