@@ -35,6 +35,11 @@ systemctl mask systemd-rfkill.service
 systemctl mask systemd-rfkill.socket
 systemctl start tlp.service
 
+banner "I will configure bluetooth"
+sed -i "s?#AutoEnable=false?AutoEnable=true?g" /etc/bluetooth/main.conf   
+systemctl enable bluetooth.service
+systemctl start bluetooth.service
+
 banner "I will configure mount a partition without asking for my password"
 
 if [ ! -f "/etc/polkit-1/rules.d/99-mount-partitions.rules" ]; then
