@@ -145,8 +145,8 @@ interval=3600
 LABEL= 
 DATEFMT=+%a %d.%m.%Y
 SHORTFMT=+%a %d.%m.%Y
-HEIGHT=230
-WIDTH=300
+HEIGHT=0
+WIDTH=200
 
 [time]
 command=date '+%I:%M'
