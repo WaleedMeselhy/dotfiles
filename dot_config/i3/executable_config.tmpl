@@ -231,7 +231,7 @@ bar
     position top
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 8
+    font pango: FontAwesome, Regular 12
     
     {{- if ne .monitor1 "" }}
     output $monitor_one
@@ -260,7 +260,7 @@ bar
     position top
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 10
+    font pango: FontAwesome, Regular 14
     output $monitor_two
     colors
     {
@@ -299,4 +299,14 @@ exec_always --no-startup-id "sh -c 'sleep 1; exec  picom --config ~/.config/pico
 
 exec_always --no-startup-id exec clipmenud
 bindsym $mod+Shift+v exec clipmenu
-bindsym Print exec scrot $HOME/Images/`date +%Y-%m-%d_%H:%M:%S`.png
+#bindsym Print exec scrot $HOME/Images/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# Screenshots
+#bindsym  --release Print exec maim /home/$USER/Pictures/$(date)
+#bindsym  --release $mod + Print exec  maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+#bindsym  --release Shift + Print exec  maim --select "/home/$USER/Pictures/$(date)"
+
+
+bindsym --release Print exec --no-startup-id maim "/home/$USER/Pictures/$(date).png"
+bindsym --release Shift+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).p>
+bindsym --release $mod+Shift+Print  exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).png"
