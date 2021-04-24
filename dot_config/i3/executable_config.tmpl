@@ -111,18 +111,18 @@ set $monitor_two {{ .monitor2 }}
 
 {{- if and (ne .monitor1 "") ( ne .monitor2 "")}}
     # Bind the workspaces for monitor one
-    workspace $workspace1 output $monitor_one
-    workspace $workspace3 output $monitor_one
-    workspace $workspace5 output $monitor_one
-    workspace $workspace7 output $monitor_one
-    workspace $workspace9 output $monitor_one
+    workspace $workspace1 output $monitor_two
+    workspace $workspace3 output $monitor_two
+    workspace $workspace5 output $monitor_two
+    workspace $workspace7 output $monitor_two
+    workspace $workspace9 output $monitor_two
 
     # Bind the workspaces for monitor two
-    workspace $workspace2 output $monitor_two
-    workspace $workspace4 output $monitor_two
-    workspace $workspace6 output $monitor_two
-    workspace $workspace8 output $monitor_two
-    workspace $workspace0 output $monitor_two
+    workspace $workspace2 output $monitor_one
+    workspace $workspace4 output $monitor_one
+    workspace $workspace6 output $monitor_one
+    workspace $workspace8 output $monitor_one
+    workspace $workspace0 output $monitor_one
 
 {{- end }}
 
