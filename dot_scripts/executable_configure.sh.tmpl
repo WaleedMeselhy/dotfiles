@@ -76,22 +76,32 @@ sudo -u "$NORMAL_USER" -- sh -c "
     git config --global user.email "waleed_meselhy@eng.asu.edu.eg"
     git config --global user.name "Waleed Meselhy"
     "
-tee -a /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf >/dev/null <<EOT
-Section "OutputClass"
-    Identifier "intel"
-    MatchDriver "i915"
-    Driver "modesetting"
+
+# tee -a /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf >/dev/null <<EOT
+# Section "OutputClass"
+#     Identifier "intel"
+#     MatchDriver "i915"
+#     Driver "modesetting"
+# EndSection
+
+# Section "OutputClass"
+#     Identifier "nvidia"
+#     MatchDriver "nvidia-drm"
+#     Driver "nvidia"
+#     Option "AllowEmptyInitialConfiguration"
+#     Option "PrimaryGPU" "yes"
+#     ModulePath "/usr/lib/nvidia/xorg"
+#     ModulePath "/usr/lib/xorg/modules"
+# EndSection
+# EOT
+
+tee -a /etc/X11/xorg.conf.d/20-intel.conf >/dev/null <<EOT
+Section "Device"
+  Identifier "Intel Graphics"
+  Driver "intel"
+  Option "TearFree" "true"
 EndSection
 
-Section "OutputClass"
-    Identifier "nvidia"
-    MatchDriver "nvidia-drm"
-    Driver "nvidia"
-    Option "AllowEmptyInitialConfiguration"
-    Option "PrimaryGPU" "yes"
-    ModulePath "/usr/lib/nvidia/xorg"
-    ModulePath "/usr/lib/xorg/modules"
-EndSection
 EOT
 
 tee -a /etc/X11/xorg.conf.d/30-touchpad.conf >/dev/null <<EOT
