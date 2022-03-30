@@ -293,6 +293,7 @@ bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 exec --no-startup-id "setxkbmap -layout us,ara -option grp:alt_shift_toggle"
 
 # exec_always --no-startup-id exec ~/.scripts/.screenlayout/dual.sh
+exec_always --no-startup-id exec xmodmap ~/.Xmodmap
 
 exec_always --no-startup-id "sh -c 'sleep 1; exec  picom --config ~/.config/picom/picom.conf  --xrender-sync-fence'"
 
