@@ -106,23 +106,23 @@ set $workspace9 " 9:  "
 set $workspace0 " 10:  "
 
 
-set $monitor_one {{ .monitor1 }}
-set $monitor_two {{ .monitor2 }}
+set $laptop {{ .laptop }}
+set $external {{ .external }}
 
-{{- if and (ne .monitor1 "") ( ne .monitor2 "")}}
-    # Bind the workspaces for monitor one
-    workspace $workspace1 output $monitor_two
-    workspace $workspace3 output $monitor_two
-    workspace $workspace5 output $monitor_two
-    workspace $workspace7 output $monitor_two
-    workspace $workspace9 output $monitor_two
+{{- if and (ne .laptop "") ( ne .external "")}}
+    # Bind the workspaces for monitor external
+    workspace $workspace1 output $laptop
+    workspace $workspace3 output $laptop
+    workspace $workspace5 output $laptop
+    workspace $workspace7 output $laptop
+    workspace $workspace9 output $laptop
 
-    # Bind the workspaces for monitor two
-    workspace $workspace2 output $monitor_one
-    workspace $workspace4 output $monitor_one
-    workspace $workspace6 output $monitor_one
-    workspace $workspace8 output $monitor_one
-    workspace $workspace0 output $monitor_one
+    # Bind the workspaces for monitor laptop
+    workspace $workspace2 output $external
+    workspace $workspace4 output $external
+    workspace $workspace6 output $external
+    workspace $workspace8 output $external
+    workspace $workspace0 output $external
 
 {{- end }}
 
@@ -233,9 +233,9 @@ bar
     i3bar_command i3bar
     font pango: FontAwesome, Regular 12
     
-    {{- if ne .monitor1 "" }}
-    output $monitor_one
-    tray_output $monitor_one
+    {{- if ne .laptop "" }}
+    output $laptop
+    tray_output $external
     {{- end }}
 
 
@@ -251,7 +251,7 @@ bar
 }
 
 
-{{- if ne .monitor2 "" }}
+{{- if ne .external "" }}
 
 # Start i3blocks to display a workspace bar
 bar
@@ -259,8 +259,8 @@ bar
     position top
     status_command 2>/tmp/i3blocks.err i3blocks  | tee /tmp/i3blocks.out
     i3bar_command i3bar
-    font pango: FontAwesome, Regular 8
-    output $monitor_two
+    font pango: FontAwesome, Regular 14
+    output $external
     colors
     {
 #           Border Background Text

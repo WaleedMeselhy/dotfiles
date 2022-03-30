@@ -65,6 +65,12 @@ sudo -u "$NORMAL_USER" -- sh -c "
     git config --global mergetool.p4merge.path \"/usr/bin/p4merge\"
     git config --global mergetool.prompt false
     "
+
+banner "I will change default diff tool and merge tool to p4merge"
+sudo -u "$NORMAL_USER" -- sh -c "
+    git config --global user.email "waleed_meselhy@eng.asu.edu.eg"
+    git config --global user.name "Waleed Meselhy"
+    "
 tee -a /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf >/dev/null <<EOT
 Section "OutputClass"
     Identifier "intel"
@@ -89,6 +95,8 @@ Section "InputClass"
     Driver "libinput"
     MatchIsTouchpad "on"
     Option "Tapping" "on"
+    Option "NaturalScrolling" "true"
+    Option "TappingButtonMap" "lrm"
 EndSection
 EOT
 
