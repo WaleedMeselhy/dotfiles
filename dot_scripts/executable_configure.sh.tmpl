@@ -40,6 +40,11 @@ sed -i "s?#AutoEnable=false?AutoEnable=true?g" /etc/bluetooth/main.conf
 systemctl enable bluetooth.service
 systemctl start bluetooth.service
 
+banner "I will configure libinput-gestures-setup"
+gpasswd -a $USER input
+newgrp input
+libinput-gestures-setup autostart start
+
 banner "I will configure mount a partition without asking for my password"
 
 if [ ! -f "/etc/polkit-1/rules.d/99-mount-partitions.rules" ]; then
