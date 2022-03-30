@@ -22,22 +22,22 @@ window:
     y: 0
 
   decorations: full
-
+  opacity: .9
 scrolling:
   multiplier: 1
 
 # Font configurations
 font:
   normal:
-    family: Fira Code
+    family: MesloLGS NF
     style: Regular
 
   bold:
-    family: Fira Code
+    family: MesloLGS NF
     style: Bold
 
   italic:
-    family: Fira Code
+    family: MesloLGS NF
     style: Italic
 
   size: 10.0
@@ -91,7 +91,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
 
-background_opacity: 0.9
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
